@@ -1,6 +1,6 @@
 package com.leoni.sapbooking.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +27,11 @@ public class SAPHeureCompensations {
 	private float number;
 	@Column(name = "costCtr")
 	private String costCtr;
+	
+	public static String[] fields(){
+		
+		return new String[] {"matriculeRH","name","date","number","TimeTypeText","costCent"};	
+	}
 	public SAPHeureCompensations() {
 		super();
 		// TODO Auto-generated constructor stub

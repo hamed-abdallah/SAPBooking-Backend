@@ -21,7 +21,7 @@ public class CronBatchService {
 	private JobLauncher jobLauncher;
 	
 	@Autowired
-	private Job job;
+	private Job job,jobcomp,jobbook;
 
 	
 	@SneakyThrows
@@ -32,6 +32,8 @@ public class CronBatchService {
 		
 			try {
 				jobLauncher.run(job, jobParameter);
+				jobLauncher.run(jobcomp, jobParameter);
+				jobLauncher.run(jobbook, jobParameter);
 			} catch (JobExecutionAlreadyRunningException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

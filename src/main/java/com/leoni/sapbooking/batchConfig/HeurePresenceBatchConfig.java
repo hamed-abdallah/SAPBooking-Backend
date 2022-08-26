@@ -25,42 +25,27 @@ import com.leoni.sapbooking.model.SAPHeurePresence;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
-
 public class HeurePresenceBatchConfig {
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 	@Autowired
 	private JobBuilderFactory jobBuilderFactory;
 	@Autowired
-	private DataSource dataSource;
-	
-
-	
+	private DataSource dataSource;	
 	@Bean
 	public FlatFileItemReader<SAPHeurePresence> readfromcsv(){
 		FlatFileItemReader<SAPHeurePresence> reader= new FlatFileItemReader<SAPHeurePresence>();
 		reader.setResource(new FileSystemResource("C://Users/ASUS/OneDrive/Bureau/jobsCSV/data.csv"));
 		//reader.setResource(new ClassPathResource("data.csv"));
-		reader.setLineMapper(new DefaultLineMapper<SAPHeurePresence>(){
-			{
-			setLineTokenizer(new DelimitedLineTokenizer(){
-				{
+		reader.setLineMapper(new DefaultLineMapper<SAPHeurePresence>(){	{
+			setLineTokenizer(new DelimitedLineTokenizer(){{
 					setNames(SAPHeurePresence.fields());
-				}
-			});
-				setFieldSetMapper(new BeanWrapperFieldSetMapper<SAPHeurePresence>() {
-					{
+				}});
+				setFieldSetMapper(new BeanWrapperFieldSetMapper<SAPHeurePresence>() {{
 						setTargetType(SAPHeurePresence.class);
-					}
-				
-			});
-			}
-		});
-		return reader;
-		
+					}});}});
+		return reader;	
 	}
-	
-	
 	@Bean
 	public JdbcBatchItemWriter<SAPHeurePresence> writerintodb(){
 		JdbcBatchItemWriter<SAPHeurePresence> writer=new JdbcBatchItemWriter<SAPHeurePresence>();
@@ -73,7 +58,6 @@ public class HeurePresenceBatchConfig {
 	public Step step() {
 		return stepBuilderFactory.get("step").<SAPHeurePresence,SAPHeurePresence>chunk(10)
 		.reader(readfromcsv()).writer(writerintodb()).build();
-		 
 	}
 	@Bean
 	public Job job() {

@@ -1,6 +1,6 @@
 package com.leoni.sapbooking.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 import javax.persistence.Column;
@@ -40,22 +40,26 @@ public class SAPBooking {
 	@Column(name = "creaton")
 	private String creaton;
 	@Column(name = "timeOfEnt")
-	private Time timeOfEnt;
+	private String timeOfEnt;
 	@Column(name = "lastChange")
 	private String lastChange;
 	@Column(name = "timeOfLast")
-	private Time timeOfLast ;
+	private String timeOfLast ;
 	@Column(name = "document")
 	private String document ;
 	@Column(name = "createdBy")
 	private String createdBy ;
+public static String[] fields(){
+		
+		return new String[] {"persNum","name","status","act","team","date","recCost","wbs","costCenter","shortText","hours","creaton","timeOfEnt","lastChange","timeOfLast","document","createdBy"};	
+	}
 	public SAPBooking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public SAPBooking(Integer id, String persNum, String name, int status, String act, String team, Date date,
 			String recCost, String wbs, String costCenter, String shortText, float hours, String creaton,
-			Time timeOfEnt, String lastChange, Time timeOfLast, String document, String createdBy) {
+			String timeOfEnt, String lastChange, String timeOfLast, String document, String createdBy) {
 		super();
 		this.id = id;
 		this.persNum = persNum;
@@ -154,10 +158,10 @@ public class SAPBooking {
 	public void setCreaton(String creaton) {
 		this.creaton = creaton;
 	}
-	public Time getTimeOfEnt() {
+	public String getTimeOfEnt() {
 		return timeOfEnt;
 	}
-	public void setTimeOfEnt(Time timeOfEnt) {
+	public void setTimeOfEnt(String timeOfEnt) {
 		this.timeOfEnt = timeOfEnt;
 	}
 	public String getLastChange() {
@@ -166,10 +170,10 @@ public class SAPBooking {
 	public void setLastChange(String lastChange) {
 		this.lastChange = lastChange;
 	}
-	public Time getTimeOfLast() {
+	public String getTimeOfLast() {
 		return timeOfLast;
 	}
-	public void setTimeOfLast(Time timeOfLast) {
+	public void setTimeOfLast(String timeOfLast) {
 		this.timeOfLast = timeOfLast;
 	}
 	public String getDocument() {
