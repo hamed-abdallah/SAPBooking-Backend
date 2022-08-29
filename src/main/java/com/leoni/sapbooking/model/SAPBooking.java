@@ -51,7 +51,7 @@ public class SAPBooking {
 	private String createdBy ;
 public static String[] fields(){
 		
-		return new String[] {"persNum","name","status","act","team","date","recCost","wbs","costCenter","shortText","hours","creaton","timeOfEnt","lastChange","timeOfLast","document","createdBy"};	
+		return new String[] {"name","persNum","status","act","team","date","recCost","wbs","costCenter","shortText","hours","creaton","timeOfEnt","lastChange","timeOfLast","document","createdBy"};	
 	}
 	public SAPBooking() {
 		super();

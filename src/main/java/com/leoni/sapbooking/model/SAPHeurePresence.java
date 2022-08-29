@@ -35,7 +35,7 @@ public class SAPHeurePresence {
 	}
 	public static String[] fields(){
 		
-		return new String[] {"matriculeRH","name","date","numb","costCent","costCtr"};	
+		return new String[] {"name","matriculeRH","date","numb","costCent","costCtr"};	
 	}
 	public SAPHeurePresence(int id, String matriculeRH, String name, Date date, float numb, String costCent,
 			int costCtr) {

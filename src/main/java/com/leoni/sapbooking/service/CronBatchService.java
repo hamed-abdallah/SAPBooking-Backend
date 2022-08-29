@@ -25,7 +25,7 @@ public class CronBatchService {
 
 	
 	@SneakyThrows
-	@Scheduled(cron="0/15 * * * * ?")
+	//@Scheduled(cron="0/15 * * * * ?")
 	public void StarterJob() {
 		JobParameters jobParameter = new JobParametersBuilder()
 				.addLong("time", System.currentTimeMillis()).toJobParameters();

@@ -30,7 +30,7 @@ public class SAPHeureCompensations {
 	
 	public static String[] fields(){
 		
-		return new String[] {"matriculeRH","name","date","number","TimeTypeText","costCent"};	
+		return new String[] {"name","matriculeRH","date","number","TimeTypeText","costCent"};	
 	}
 	public SAPHeureCompensations() {
 		super();

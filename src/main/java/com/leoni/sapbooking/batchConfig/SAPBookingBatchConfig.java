@@ -31,7 +31,7 @@ public class SAPBookingBatchConfig {
 	@Bean
 	public FlatFileItemReader<SAPBooking> readfromcsvbook(){
 		FlatFileItemReader<SAPBooking> reader= new FlatFileItemReader<SAPBooking>();
-		reader.setResource(new FileSystemResource("C://Users/ASUS/OneDrive/Bureau/jobsCSV/data2.csv"));
+		reader.setResource(new FileSystemResource("D://Projet stage LEONI/jobsCSV/data2.csv"));
 		//reader.setResource(new ClassPathResource("data.csv"));
 		reader.setLineMapper(new DefaultLineMapper<SAPBooking>(){
 			{
@@ -54,7 +54,7 @@ public class SAPBookingBatchConfig {
 	public JdbcBatchItemWriter<SAPBooking> writerintodbbook(){
 		JdbcBatchItemWriter<SAPBooking> writer=new JdbcBatchItemWriter<SAPBooking>();
 		writer.setDataSource(dataSource);
-		writer.setSql("INSERT INTO sapbooking(pers_num,name,status,act,team,date,rec_cost,wbs,cost_center,short_text,hours,creaton,time_of_ent,last_change,time_of_last,document,created_by) Values (:persNum,:name,:status,:act,:team,:date,:recCost,:wbs,:costCenter,:shortText,:hours,:creaton,:timeOfEnt,:lastChange,:timeOfLast,:document,:createdBy);");
+		writer.setSql("INSERT INTO sapbooking(name,pers_num,status,act,team,date,rec_cost,wbs,cost_center,short_text,hours,creaton,time_of_ent,last_change,time_of_last,document,created_by) Values (:name,:persNum,:status,:act,:team,:date,:recCost,:wbs,:costCenter,:shortText,:hours,:creaton,:timeOfEnt,:lastChange,:timeOfLast,:document,:createdBy);");
 		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<SAPBooking>());
 		return writer;
 	}

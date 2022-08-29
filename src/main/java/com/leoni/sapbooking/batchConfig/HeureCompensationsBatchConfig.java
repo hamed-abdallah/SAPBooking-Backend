@@ -34,7 +34,7 @@ public class HeureCompensationsBatchConfig {
 	@Bean
 	public FlatFileItemReader<SAPHeureCompensations> readfromcsvcomp(){
 		FlatFileItemReader<SAPHeureCompensations> reader= new FlatFileItemReader<SAPHeureCompensations>();
-		reader.setResource(new FileSystemResource("C://Users/ASUS/OneDrive/Bureau/jobsCSV/data1.csv"));
+		reader.setResource(new FileSystemResource("D://Projet stage LEONI/jobsCSV/data1.csv"));
 		//reader.setResource(new ClassPathResource("data.csv"));
 		reader.setLineMapper(new DefaultLineMapper<SAPHeureCompensations>(){
 			{
@@ -60,7 +60,7 @@ public class HeureCompensationsBatchConfig {
 	public JdbcBatchItemWriter<SAPHeureCompensations> writerintodbcomp(){
 		JdbcBatchItemWriter<SAPHeureCompensations> writer=new JdbcBatchItemWriter<SAPHeureCompensations>();
 		writer.setDataSource(dataSource);
-		writer.setSql("INSERT INTO sapheure_compensations (matriculerh,name,date,number,time_type_text,cost_) Values (:matriculeRH,:name,:date,:number,:TimeTypeText,:costCtr);");
+		writer.setSql("INSERT INTO sapheure_compensations (name,matriculerh,date,number,time_type_text,cost_ctr) Values (:name,:matriculeRH,:date,:number,:TimeTypeText,:costCtr);");
 		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<SAPHeureCompensations>());
 		return writer;
 	}

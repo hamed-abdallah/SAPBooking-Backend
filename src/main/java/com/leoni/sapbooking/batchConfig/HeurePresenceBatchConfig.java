@@ -35,7 +35,7 @@ public class HeurePresenceBatchConfig {
 	@Bean
 	public FlatFileItemReader<SAPHeurePresence> readfromcsv(){
 		FlatFileItemReader<SAPHeurePresence> reader= new FlatFileItemReader<SAPHeurePresence>();
-		reader.setResource(new FileSystemResource("C://Users/ASUS/OneDrive/Bureau/jobsCSV/data.csv"));
+		reader.setResource(new FileSystemResource("D://Projet stage LEONI/jobsCSV/data.csv"));
 		//reader.setResource(new ClassPathResource("data.csv"));
 		reader.setLineMapper(new DefaultLineMapper<SAPHeurePresence>(){	{
 			setLineTokenizer(new DelimitedLineTokenizer(){{
@@ -50,7 +50,7 @@ public class HeurePresenceBatchConfig {
 	public JdbcBatchItemWriter<SAPHeurePresence> writerintodb(){
 		JdbcBatchItemWriter<SAPHeurePresence> writer=new JdbcBatchItemWriter<SAPHeurePresence>();
 		writer.setDataSource(dataSource);
-		writer.setSql("INSERT INTO sapheure_presence (matriculerh,name,date,numb,cost_ctr,cost_cent) Values (:matriculeRH,:name,:date,:numb,:costCtr,:costCent);");
+		writer.setSql("INSERT INTO sapheure_presence (name,matriculerh,date,numb,cost_ctr,cost_cent) Values (:name,:matriculeRH,:date,:numb,:costCtr,:costCent);");
 		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<SAPHeurePresence>());
 		return writer;
 	}
