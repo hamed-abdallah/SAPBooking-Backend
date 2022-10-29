@@ -60,7 +60,7 @@ public class HeureCompensationsBatchConfig {
 	public JdbcBatchItemWriter<SAPHeureCompensations> writerintodbcomp(){
 		JdbcBatchItemWriter<SAPHeureCompensations> writer=new JdbcBatchItemWriter<SAPHeureCompensations>();
 		writer.setDataSource(dataSource);
-		writer.setSql("INSERT INTO sapheure_compensations (name,matriculerh,date,number,time_type_text,cost_ctr) Values (:name,:matriculeRH,:date,:number,:TimeTypeText,:costCtr);");
+		writer.setSql("INSERT INTO sapheure_compensations (matriculerh,name,date,number,time_type_text,cost_ctr) Values (:name,:matriculeRH,:date,:number,:TimeTypeText,:costCtr);");
 		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<SAPHeureCompensations>());
 		return writer;
 	}
