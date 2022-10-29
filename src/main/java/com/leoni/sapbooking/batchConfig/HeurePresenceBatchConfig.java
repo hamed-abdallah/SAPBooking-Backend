@@ -50,7 +50,7 @@ public class HeurePresenceBatchConfig {
 	public JdbcBatchItemWriter<SAPHeurePresence> writerintodb(){
 		JdbcBatchItemWriter<SAPHeurePresence> writer=new JdbcBatchItemWriter<SAPHeurePresence>();
 		writer.setDataSource(dataSource);
-		writer.setSql("INSERT INTO sapheure_presence (name,matriculerh,date,numb,cost_ctr,cost_cent) Values (:name,:matriculeRH,:date,:numb,:costCtr,:costCent);");
+		writer.setSql("INSERT INTO sapheure_presence (name,matriculerh,date,numb,cost_ctr,cost_cent) Values (:matriculeRH,:name,:date,:numb,:costCtr,:costCent);");
 		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<SAPHeurePresence>());
 		return writer;
 	}
